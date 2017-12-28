@@ -21,7 +21,6 @@ function getSVGData(svg) {
 
         if (attrs.width) {
           data.width = attrs.width;
-          re;
         }
 
         if (attrs.viewBox) {
