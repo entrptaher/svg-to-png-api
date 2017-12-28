@@ -1,0 +1,12 @@
+{
+  "name": "svg-to-png-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "convert-svg-to-png": "^0.3.3",
+    "express": "^4.16.2",
+    "svgson": "^2.1.0"
+  }
+}
