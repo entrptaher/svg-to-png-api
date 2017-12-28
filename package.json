@@ -5,8 +5,10 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.17.1",
+    "base-64": "^0.1.0",
     "convert-svg-to-png": "^0.3.3",
     "express": "^4.16.2",
-    "svgson": "^2.1.0"
+    "svgson": "^2.1.0",
+    "utf8": "^3.0.0"
   }
 }

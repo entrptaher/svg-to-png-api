@@ -4,6 +4,9 @@ const { convert } = require('convert-svg-to-png');
 const express = require('express');
 const app = express();
 
+var base64 = require('base-64');
+var utf8 = require('utf8');
+
 function getSVGData(svg) {
   const data = {
     height: 0,
@@ -48,8 +51,14 @@ function convertFromURL(url) {
   });
 }
 
-app.get('/convert', async (req, res) => {
-  const png = await convertFromURL(req.query.url);
+app.get('/', async(req, res)=>{
+  res.redirect('/convert/' + base64.encode(utf8.encode(req.query.url)))
+})
+
+app.get('/convert/:id', async (req, res) => {
+  const bytes = base64.decode(req.params.id);
+  const url = utf8.decode(bytes);
+  const png = await convertFromURL(url);
   res.set('Content-Type', 'image/png');
   res.send(png);
 });
