@@ -10,25 +10,29 @@ function getSVGData(svg) {
     width: 0
   };
   return new Promise(function(resolve, reject) {
-    svgson(svg, {}, result => {
-      const attrs = result.attrs;
-      if (attrs.height) {
-        data.height = attrs.height;
-      }
+    svgson(
+      svg,
+      { puppeteer: { args: ['--no-sandbox', '--disable-setuid-sandbox'] } },
+      result => {
+        const attrs = result.attrs;
+        if (attrs.height) {
+          data.height = attrs.height;
+        }
 
-      if (attrs.width) {
-        data.width = attrs.width;
-        re;
-      }
+        if (attrs.width) {
+          data.width = attrs.width;
+          re;
+        }
 
-      if (attrs.viewBox) {
-        const viewBox = attrs.viewBox;
-        data.width = viewBox.split(' ')[2];
-        data.height = viewBox.split(' ')[3];
-      }
+        if (attrs.viewBox) {
+          const viewBox = attrs.viewBox;
+          data.width = viewBox.split(' ')[2];
+          data.height = viewBox.split(' ')[3];
+        }
 
-      resolve(data);
-    });
+        resolve(data);
+      }
+    );
   });
 }
 
