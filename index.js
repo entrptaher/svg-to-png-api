@@ -55,6 +55,10 @@ app.get('/', async(req, res)=>{
   res.redirect('/convert/' + base64.encode(utf8.encode(req.query.url)))
 })
 
+app.get('/slash/:host*', async (req, res) => {
+  res.redirect('/convert/' + base64.encode(utf8.encode(req.param('host') + req.param(0))))
+});
+
 app.get('/convert/:id', async (req, res) => {
   const bytes = base64.decode(req.params.id);
   const url = utf8.decode(bytes);
